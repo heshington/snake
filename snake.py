@@ -7,15 +7,15 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 
-class Snake():
+class Snake:
     """
     Snake class
     """
-    def __init__(self):
+    def __init__(self, loop):
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
-
+        self.loop = loop
 
 
     def create_snake(self):
@@ -34,18 +34,22 @@ class Snake():
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
+            self.loop()
 
     def down(self):
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
+            self.loop()
 
     def left(self):
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
+            self.loop()
 
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+            self.loop()
 
     def add_segment(self, position):
         new_segment = Turtle("square")
