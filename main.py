@@ -48,8 +48,8 @@ def loop(repeat=True):
     # Detect collision with tail.
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) <10:
-            scoreboard.game_over()
-            return
+            scoreboard.reset()
+            snake.reset()
 
     if repeat:
         screen.ontimer(loop, 100)
